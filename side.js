@@ -46,6 +46,9 @@ class Side extends Resource {
   }
 
   toTracks() {
+    // TODO split this.filename into individual audio files, return array of new
+    // Track objects
+
     return new Track(this.filename)
   }
 }
