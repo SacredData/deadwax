@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "baptism": "0.0.5",
     "disconnect": "^1.2.1",
     "nanoprocess": "^0.8.5",
     "nanoresource": "^1.3.0"
