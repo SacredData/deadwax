@@ -10,7 +10,7 @@ class Side extends Resource {
     }
   }
 
-  record() {
+  record(cb) {
     // spawn a comand
     const rec = Process('rec', [
       `side${this.number}.wav`,
@@ -32,8 +32,15 @@ class Side extends Resource {
       rec.stat((err, stats) => {
         console.log(stats)
       })
+
       rec.process.on('stdout', stdout => console.log(stdout))
       rec.process.on('stderr', stderr => console.log(stderr))
+
+      rec.process.on('close', code => {
+        console.log('Exited with code', code)
+        this.filename = path.resolve(`./side${this.number}.wav`) // this is worng
+        this.inactive(cb, null, this.filename)
+      })
     })
   }
 }
