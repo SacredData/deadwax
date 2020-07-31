@@ -1,5 +1,6 @@
 const Process = require('nanoprocess')
 const Resource = require('nanoresource')
+const { Track } = require('baptism')
 
 
 class Side extends Resource {
@@ -38,10 +39,14 @@ class Side extends Resource {
 
       rec.process.on('close', code => {
         console.log('Exited with code', code)
-        this.filename = path.resolve(`./side${this.number}.wav`) // this is worng
+        this.filename = path.resolve(`./side1001.wav`) // this is worng
         this.inactive(cb, null, this.filename)
       })
     })
+  }
+
+  toTracks() {
+    return new Track(this.filename)
   }
 }
 
